@@ -1,0 +1,4 @@
+XTerm*faceName: 0xproto
+XTerm*faceSize: 10
+XTerm.renderFont: true
+XTerm.termName: xterm-256color

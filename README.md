@@ -1,2 +1,3 @@
-# i3-wm-config
-# i3-wm-config
+**HOW TO USE**
+
+Clone into home (cd ~) folder on any i3-wm desktop.
