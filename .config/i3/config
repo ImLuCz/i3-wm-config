@@ -1,4 +1,4 @@
-# i3-wm CONFIG FILE
+# i3-wm CONFIG FILE 
 #AUTHOR: github.com/ImLuCz
 
 # Mod key
@@ -12,17 +12,19 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id nm-applet
 exec --no-startup-id xfce4-power-manager
 # Wallpaper
-exec --no-startup-id feh --bg-scale ~/Pictures/wp/wallpaper.png
+exec --no-startup-id feh --bg-scale ~/Pictures/wp/wallpaper.png 
 exec --no-startup-id flameshot
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # auto tiling
-exec --no-startup-id autotiling
+exec_always --no-startup-id autotiling
+# night light
+exec --no-startup-id redshift-gtk
 
 # Launcher
 bindsym $mod+Ctrl+Return exec rofi -show drun
 
 # Terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec alacritty 
 
 # App shortcuts
 bindsym $mod+e exec thunar
@@ -37,7 +39,7 @@ bindsym $mod+Control+l exec i3lock -c 000000
 # Audio
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle 
 
 # Workspace navigation with superior vim keybinds
 bindsym $mod+h focus left
@@ -61,12 +63,12 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+q kill
 
 # Force quit focused window
-bindsym $mod+Shift+q exec xkill
+bindsym $mod+Shift+q exec xkill 
 
 # Exit, reload, restart
 bindsym $mod+Shift+e exit
 bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r restart 
 
 # Workspaces
 set $ws1 "1"
@@ -79,7 +81,7 @@ bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
+bindsym $mod+5 workspace $ws5 
 
 # Move focused window to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -97,4 +99,55 @@ bar {
 	font pango:JetBrains Mono 15
 	tray_output primary
 	position top
+	
+	# Catppuccin frappe colors
+        colors {
+        background $crust
+        statusline $text
+        separator  $overlay1
+
+        focused_workspace  $lavender $lavender $crust
+        active_workspace   $surface0 $surface0 $text
+        inactive_workspace $base     $base     $overlay0
+        urgent_workspace   $red      $red      $crust
+        binding_mode       $peach    $peach    $crust
+        }
+
 }
+
+# Catppuccin frappe colors
+set $rosewater #f2d5cf
+set $flamingo #eebebe
+set $pink #f4b8e4
+set $mauve #ca9ee6
+set $red #e78284
+set $maroon #ea999c
+set $peach #ef9f76
+set $yellow #e5c890
+set $green #a6d189
+set $teal #81c8be
+set $sky #99d1db
+set $sapphire #85c1dc
+set $blue #8caaee
+set $lavender #babbf1
+set $text #c6d0f5
+set $subtext1 #b5bfe2
+set $subtext0 #a5adce
+set $overlay2 #949cbb
+set $overlay1 #838ba7
+set $overlay0 #737994
+set $surface2 #626880
+set $surface1 #51576d
+set $surface0 #414559
+set $base #303446
+set $mantle #292c3c
+set $crust #232634
+
+# Window colors
+client.focused          $overlay2 $overlay2 $crust $text $overlay2
+client.focused_inactive $surface0 $surface0 $crust   $overlay1 $surface0
+client.unfocused        $mantle   $mantle   $crust   $overlay0 $mantle
+client.urgent           $red      $red      $crust   $text   $red
+client.placeholder      $base     $base     $crust   $overlay0 $base
+client.background       $base
+
